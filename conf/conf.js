@@ -21,7 +21,7 @@ exports.config = {
 
   // Spec patterns are relative to the current working directory when
   // protractor is called.
-  specs: ['../tests/example_spec.js'],
+  specs: ['../tests/calculator.js'],
 
   // Options to be passed to Jasmine.
   jasmineNodeOpts: {
