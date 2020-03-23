@@ -108,5 +108,8 @@ dist
 example_spec.js
 
 # Reports
+target
 .target
 .conf/target
+allure-results
+.allure-results
