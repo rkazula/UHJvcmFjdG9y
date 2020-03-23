@@ -2,7 +2,7 @@
  * @Author: Robert Kazuła <rkazula>
  * @Date:   22-03-2020
  * @Email:  rkazula@gmail.com
- * @Last modified by:   rkazula
+ * @Last modified by:   Robert Kazuła
  * @Last modified time: 23-03-2020
  * @License: MIT
  */
@@ -19,11 +19,6 @@ var reporter = new HtmlScreenshotReporter({
   preserveDirectory: true
 });
 
-var AllureReporter = require('jasmine-allure-reporter');
-jasmine.getEnv().addReporter(new AllureReporter({
-  resultsDir: 'allure-results'
-}));
-
 exports.config = {
   directConnect: true,
 
@@ -37,13 +32,7 @@ exports.config = {
   },
 
   // Framework to use. Jasmine is recommended.
-  framework: 'jasmine2',
-  onPrepare: function() {
-    var AllureReporter = require('jasmine-allure-reporter');
-    jasmine.getEnv().addReporter(new AllureReporter({
-      resultsDir: 'allure-results'
-    }));
-  }
+  framework: 'jasmine',
 
   // Spec patterns are relative to the current working directory when
   // protractor is called.
@@ -65,6 +54,18 @@ exports.config = {
   // Assign the test reporter to each running instance
   onPrepare: function() {
     jasmine.getEnv().addReporter(reporter);
+    var AllureReporter = require('jasmine-allure-reporter');
+    jasmine.getEnv().addReporter(new AllureReporter({
+      resultsDir: '../allure-results'
+    }));
+    jasmine.getEnv().afterEach(function(done) {
+      browser.takeScreenshot().then(function(png) {
+        allure.createAttachment('Screenshot', function() {
+          return new Buffer(png, 'base64')
+        }, 'image/png')();
+        done();
+      })
+    });
   },
 
   // Close the report after all tests finish
