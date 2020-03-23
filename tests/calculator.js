@@ -9,17 +9,16 @@
 
 let calculatorPage = require('../pages/calculatorPage');
 
- describe('Super Calculator test', function() {
-   it('openPage', function() {
-     calculatorPage.getUrl('http://juliemr.github.io/protractor-demo/');
-     expect(browser.getTitle()).toEqual("Super Calculator");
+describe('Super Calculator test', function() {
+  it('openPage', function() {
+    calculatorPage.getUrl('http://juliemr.github.io/protractor-demo/');
+    expect(browser.getTitle()).toEqual("Super Calculator");
 
-     calculatorPage.inputFirstValue('2');
-     calculatorPage.inputSecondValue('3');
-     calculatorPage.goButtonClick();
-     calculatorPage.resultTextCheck('5');
-    //browser.sleep(2000);
+    calculatorPage.inputFirstValue('2');
+    calculatorPage.inputSecondValue('3');
+    calculatorPage.goButtonClick();
+    calculatorPage.resultTextCheck('5');
 
-   });
+  });
 
- });
+});

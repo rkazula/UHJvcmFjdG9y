@@ -7,34 +7,34 @@
  * @License: MIT
  */
 
-let calculatorPage = function(){
+let calculatorPage = function() {
 
   let inputFirst = element(by.model('first'));
   let inputSecond = element(by.model('second'));
   let goButton = element(by.id('gobutton'));
   let resultText = element(by.className('ng-binding'));
 
-  this.getUrl = function(url){
+  this.getUrl = function(url) {
     browser.get(url);
 
   };
 
-  this.inputFirstValue = function(firstNumberValue){
+  this.inputFirstValue = function(firstNumberValue) {
     inputFirst.sendKeys(firstNumberValue);
 
   };
 
-  this.inputSecondValue = function(secondNumberValue){
+  this.inputSecondValue = function(secondNumberValue) {
     inputSecond.sendKeys(secondNumberValue);
 
   };
 
-  this.goButtonClick = function(){
+  this.goButtonClick = function() {
     goButton.click();
 
   };
 
-  this.resultTextCheck = function(expectedValue){
+  this.resultTextCheck = function(expectedValue) {
     expect(resultText.getText()).toBe(expectedValue);
 
   };
