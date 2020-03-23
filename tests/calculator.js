@@ -18,13 +18,16 @@
      var inputSecond = element(by.model('second'));
      inputSecond.sendKeys('3');
 
-     var dropdownOperator = element(by.model('operator'));
-     expect(dropdownOperator.getText('+'));
+     //var dropdownOperator = element(by.model('operator'));
+     //expect(dropdownOperator.getText()).toBe('+');
 
      var goButton = element(by.id('gobutton'));
      goButton.click();
 
-     browser.sleep(2000);
+     var resultText = element(by.className('ng-binding'));
+     expect(resultText.getText()).toBe('5');
+
+    //browser.sleep(2000);
 
    });
 

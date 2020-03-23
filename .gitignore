@@ -105,3 +105,8 @@ dist
 
 # Example files
 .example_spec.js
+example_spec.js
+
+# Reports
+.target
+.conf/target
